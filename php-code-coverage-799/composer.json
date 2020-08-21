@@ -1,0 +1,31 @@
+{
+    "name": "davidgrayston/phpunit-demo",
+    "description": "PHPUnit demo",
+    "require-dev": {
+        "phpunit/phpunit": "9.3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "DG\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DG\\Test\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "demo": [
+            "composer require --dev phpunit/phpunit:9.2.6 --no-update",
+            "composer update --ansi",
+            "phpunit -c phpunit.9.2.xml --coverage-clover ./coverage/report.9.2.xml",
+            "composer require --dev phpunit/phpunit:9.3.7 --no-update",
+            "composer update --ansi",
+            "phpunit -c phpunit.9.3.xml --coverage-clover ./coverage/report.9.3.xml",
+            "git diff --color --no-index coverage/report.9.2.xml coverage/report.9.3.xml"
+        ]
+    },
+    "require": {
+    }
+}
